@@ -27,7 +27,6 @@ class MetricCard(Static):
 
 
 class LinuxDashboard(App):
-    """Real-time Linux system dashboard built with Textual and psutil."""
 
     TITLE = "ServerCtl"
     SUB_TITLE = "System Monitor"
