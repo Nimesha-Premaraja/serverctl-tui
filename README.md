@@ -1,6 +1,6 @@
 # serverctl-tui
 
-A real-time Linux server monitoring dashboard for your terminal, built with
+A real-time Linux Terminal User Interface (TUI) for system monitoring, built with
 [Textual](https://textual.textualize.io/) and [psutil](https://github.com/giampaolo/psutil).
 
 `serverctl-tui` turns any SSH session into a clean, production-grade system
