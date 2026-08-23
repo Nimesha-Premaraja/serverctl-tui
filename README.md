@@ -45,11 +45,69 @@ gauges that update in real time.
 
 ## Installation
 
-Clone the repository:
+Clone the repository first:
 
 ```bash
 git clone git@github.com:Nimesha-Premaraja/serverctl-tui.git
 cd serverctl-tui
+```
+
+Then pick **one** of the automated setups below — no need to create a virtual
+environment or install dependencies by hand.
+
+### Option 1 — Script
+
+Sets up the virtual environment, installs dependencies, and launches the app:
+
+```bash
+./run.sh
+```
+
+Set up only (without launching):
+
+```bash
+./run.sh --setup
+```
+
+### Option 2 — Make
+
+```bash
+make run        # set up (if needed) and run
+make install    # set up only
+make dev        # editable install, exposes the `serverctl` command
+make clean      # remove the virtual environment and caches
+```
+
+### Option 3 — pip / pyproject
+
+Install as a package to get a `serverctl` command on your `PATH`:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -e .
+serverctl
+```
+
+### Option 4 — Manual (from requirements.txt)
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+python apps/app.py
+```
+
+---
+
+## Usage
+
+If you installed with the bootstrap script or Make, the app launches for you.
+Otherwise, start it with any of:
+
+```bash
+serverctl              # if installed via `pip install -e .` or `make dev`
+python apps/app.py     # directly, from the repo root
 ```
 
 Create a virtual environment and install the dependencies:
@@ -80,20 +138,6 @@ python apps/app.py
 | `r` | Refresh immediately |
 | `d` | Toggle light / dark theme |
 | `q` | Quit                |
-
----
-
-## Project structure
-
-```
-serverctl-tui/
-├── apps/
-│   ├── app.py          # Textual application, layout, and widgets
-│   ├── dashboard.py    # Metric collection and gauge update logic
-│   └── app.tcss        # Textual CSS theme and styling
-├── LICENSE
-└── README.md
-```
 
 ---
 
