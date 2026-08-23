@@ -27,7 +27,6 @@ class MetricCard(Static):
 
 
 class LinuxDashboard(App):
-    """Real-time Linux system dashboard built with Textual and psutil."""
 
     TITLE = "ServerCtl"
     SUB_TITLE = "System Monitor"
@@ -103,5 +102,10 @@ class LinuxDashboard(App):
         return f"{days}d {hours}h {minutes}m"
 
 
-if __name__ == "__main__":
+def main() -> None:
+    """Entry point for the `serverctl` console script."""
     LinuxDashboard().run()
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,23 @@
+[project]
+name = "serverctl-tui"
+version = "0.1.0"
+description = "A real-time Linux server monitoring dashboard for your terminal."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { file = "LICENSE" }
+authors = [{ name = "Nimesha Dilshan Premaraja" }]
+dependencies = [
+    "textual>=8.0",
+    "psutil>=7.0",
+]
+
+[project.scripts]
+serverctl = "app:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "" = "apps" }
+py-modules = ["app", "dashboard"]
