@@ -26,11 +26,11 @@ class LinuxDashboard(App):
                 yield Static(id="disk", classes="stat")
 
             with Horizontal(id="system"):
-                with Vertical(classes="panel"):
+                with Vertical(id="system-panel", classes="panel"):
                     yield Label("SYSTEM", classes="panel-title")
                     yield Static(id="system-info")
 
-                with Vertical(classes="panel"):
+                with Vertical(id="network-panel", classes="panel"):
                     yield Label("NETWORK", classes="panel-title")
                     yield Static(id="network-info")
 

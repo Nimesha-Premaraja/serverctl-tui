@@ -32,12 +32,17 @@ Screen {
 }
 
 #system {
-    width: 1fr;
+    height: 12;
+    min-height: 9;
+}
+
+#system-panel {
+    width: 3fr;
     margin-right: 1;
 }
 
-#network {
-    width: 1fr;
+#network-panel {
+    width: 2fr;
 }
 
 #footer-info {
