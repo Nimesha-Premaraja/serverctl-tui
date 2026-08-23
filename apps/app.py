@@ -1,8 +1,4 @@
-import platform
-import socket
-import time
-
-import psutil
+from dashboard import update_dashboard
 from textual.app import App, ComposeResult
 from textual.containers import Grid, Horizontal, Vertical
 from textual.widgets import Footer, Header, Label, Static
@@ -43,64 +39,11 @@ class LinuxDashboard(App):
         yield Footer()
 
     def on_mount(self) -> None:
-        self.update_dashboard()
-        self.set_interval(2, self.update_dashboard)
+        update_dashboard(self)
+        self.set_interval(2, lambda: update_dashboard(self))
 
     def action_refresh(self) -> None:
-        self.update_dashboard()
-
-    def update_dashboard(self) -> None:
-        # CPU
-        cpu_percent = psutil.cpu_percent(interval=None)
-        cpu_count = psutil.cpu_count()
-
-        self.query_one("#cpu", Static).update(
-            f"[b]CPU[/b]\n\n"
-            f"Usage: {cpu_percent:.1f}%\n"
-            f"Cores: {cpu_count}"
-        )
-
-        # Memory
-        memory = psutil.virtual_memory()
-
-        self.query_one("#memory", Static).update(
-            f"[b]MEMORY[/b]\n\n"
-            f"Usage: {memory.percent:.1f}%\n"
-            f"Used: {self.bytes_to_gb(memory.used):.2f} GB\n"
-            f"Total: {self.bytes_to_gb(memory.total):.2f} GB"
-        )
-
-        # Disk
-        disk = psutil.disk_usage("/")
-
-        self.query_one("#disk", Static).update(
-            f"[b]DISK[/b]\n\n"
-            f"Usage: {disk.percent:.1f}%\n"
-            f"Used: {self.bytes_to_gb(disk.used):.2f} GB\n"
-            f"Total: {self.bytes_to_gb(disk.total):.2f} GB"
-        )
-
-        # System
-        boot_time = psutil.boot_time()
-        uptime = time.time() - boot_time
-
-        self.query_one("#system-info", Static).update(
-            f"Hostname: {socket.gethostname()}\n"
-            f"OS: {platform.system()} {platform.release()}\n"
-            f"Kernel: {platform.version()}\n"
-            f"Architecture: {platform.machine()}\n"
-            f"Uptime: {self.format_uptime(uptime)}"
-        )
-
-        # Network
-        net = psutil.net_io_counters()
-
-        self.query_one("#network-info", Static).update(
-            f"Bytes Sent: {self.bytes_to_mb(net.bytes_sent):.2f} MB\n"
-            f"Bytes Received: {self.bytes_to_mb(net.bytes_recv):.2f} MB\n"
-            f"Packets Sent: {net.packets_sent:,}\n"
-            f"Packets Received: {net.packets_recv:,}"
-        )
+        update_dashboard(self)
 
     @staticmethod
     def bytes_to_gb(value: int) -> float:
