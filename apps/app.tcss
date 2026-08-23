@@ -15,7 +15,7 @@ Screen {
 
 .panel-title {
     text-style: bold;
-    color: $accent;
+    color: #00aa55;
     margin-bottom: 1;
 }
 
