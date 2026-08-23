@@ -13,54 +13,7 @@ class LinuxDashboard(App):
 
     TITLE = "Linux Server Dashboard"
 
-    CSS = """
-    Screen {
-        background: $surface;
-    }
-
-    #dashboard {
-        height: 1fr;
-        padding: 1;
-    }
-
-    .panel {
-        border: round $primary;
-        padding: 1;
-        height: 100%;
-    }
-
-    .panel-title {
-        text-style: bold;
-        color: $accent;
-        margin-bottom: 1;
-    }
-
-    #stats {
-        height: auto;
-        margin-bottom: 1;
-    }
-
-    .stat {
-        width: 1fr;
-        border: round $secondary;
-        padding: 1;
-        margin-right: 1;
-    }
-
-    #system {
-        width: 1fr;
-        margin-right: 1;
-    }
-
-    #network {
-        width: 1fr;
-    }
-
-    #footer-info {
-        text-align: center;
-        padding: 1;
-    }
-    """
+    CSS_PATH = "app.tcss"
 
     BINDINGS = [
         ("q", "quit", "Quit"),
