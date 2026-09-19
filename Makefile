@@ -1,6 +1,4 @@
-# serverctl-tui — automation
-#
-# Usage:
+# >>> Usage:
 #   make install   Create a virtual environment and install dependencies
 #   make run       Launch the dashboard (installs first if needed)
 #   make dev       Editable install (exposes the `serverctl` command)
